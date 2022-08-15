@@ -56,6 +56,24 @@ def reverse_file(filename):
     output.close()
 
 
+
+def match_parentheses(expression):
+    """Return true is all delimiters are properly match. Flase otherwise"""
+    lefty = '({['           # opening delimiters
+    righty = ')}]'          # respective closing delims
+    S = ArrayStack()
+    for c in expression:
+        if c in lefty:
+            S.push(c)       # push left delimiter on stack
+        elif c in righty:
+            if S.is_empty():
+                return False    # nothing to match with
+            if righty.index(c) != lefty.index(S.pop()):
+                # it assumes that characters are in the same order in the lists lefty and righty
+                # The index() method returns the index of the specified element in the list.
+                return False    # mismatched symbols
+    return S.is_empty()     # were all symbols matched?
+
 # ===================================================================
 if __name__ == '__main__':
   # S = ArrayStack()                 # contents: [ ]
@@ -77,4 +95,5 @@ if __name__ == '__main__':
   # S.push(8)                        # contents: [7, 9, 6, 8]
   # print(S.pop())                   # contents: [7, 9, 6]; outputs 8
 
-  reverse_file("textak.txt")
+  # reverse_file("textak.txt")
+  print(match_parentheses("({()hfbg})"))
