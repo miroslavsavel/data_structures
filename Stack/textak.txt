@@ -1,0 +1,9 @@
+útočníkom, žiadame Vás o ich zaslanie na účely ďalšej analýzy.
+SSH kľúče a iné). Ak počas analýzy nájdete podozrivé súbory umiestnené
+používatelia) a ostatný kryptografický materiál (SSL/TLS certifikáty,
+systém a všetky používané pluginy a zmeniť prihlasovacie heslá (FTP, DB,
+alebo záznamov vytvorených útočníkom, následne aktualizovať redakčný
+súborov na FTP a obsahu databázy na prítomnosť súborov, používateľov
+prevádzkovaná. Odporúčame Vám vykonať kontrolu integrity všetkých
+kompromitácii webovej stránky a webového servera, na ktorom je
+Vzhľadom na vyššie uvedené skutočnosti je potrebné preveriť, či došlo ku
