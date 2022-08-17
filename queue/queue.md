@@ -19,6 +19,7 @@ variations:
 - priority queue - implement as tree
   - therefore first look at binary trees
 
+# https://www.youtube.com/watch?v=rUUrmGKYwHw
   
 # book Data structures and algorithms in python Goodrich
 https://github.com/mjwestcott/Goodrich
