@@ -2,6 +2,7 @@ from Empty import Empty
 
 class ArrayQueue:
     """FIFO queue implementation using a python list as underlying storage"""
+    """All of method runs in O(1) running time"""
     DEFAULT_CAPACITY = 10       # moderate capacity for all new queues
 
     def __init__(self):
