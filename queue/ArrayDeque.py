@@ -84,6 +84,24 @@ class ArrayDeque:
             walk = (1 + walk) % len(old)    # use old size aj modulus
         self._front = 0
 
+    def first(self):
+        """Return (but do not remove) the element at the front of the queue
+        If empty - raise exception
+        """
+        if self.is_empty():
+            raise Empty('Queue is empty')
+        return self._data[self._front]
+
+
+    def last(self):
+        """Return (but do not remove) the last element of the queue"""
+        if self.is_empty():
+            raise Empty('Queue is empty')
+        last_element_index = (self._front + self._size - 1) % (len(self._data))
+        return self._data[last_element_index]
+
+
+#==============================================================================Driver code
 if __name__=="__main__":
     d = ArrayDeque()
     for i,c in enumerate("ABCDEFGHIJKLMNOP"):
@@ -104,6 +122,9 @@ if __name__=="__main__":
     print(d)
     # d.add_first('y')
     # print(d)
-    for k in range(d.__len__()):
-        d.delete_last()
-        print(d)
+    # delete last test
+    # for k in range(d.__len__()):
+    #     d.delete_last()
+    #     print(d)
+    print(d.first())
+    print(d.last())
