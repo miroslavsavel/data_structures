@@ -32,6 +32,16 @@ class ArrayDeque:
         self._data[avail] = e
         self._size += 1
 
+    def add_first(self, e):
+        if self._size == len(self._data):
+            self._resize(2 * len(self._data))
+        # wrap arround beginning of the array
+        avail = (self._front - 1) % len(self._data)
+        self._data[avail] = e
+        self._front = avail
+        self._size += 1
+
+
     def delete_first(self):
         """Remove and return the first element of the queue FIFO"""
         """Element is not truly removed from List due to inefficiency"""
@@ -48,6 +58,19 @@ class ArrayDeque:
         if 0 < self._size < len(self._data) // 4:
             self._resize(len(self._data) // 2)
         return answer
+
+    def delete_last(self):
+        """Remove from the back of queue"""
+        if self.is_empty():
+            raise Empty('Queue is empty')
+        last_element_index = (self._front + self._size -1) % (len(self._data))
+        value_of_last = self._data[last_element_index]
+        self._data[last_element_index] = None
+        self._size -= 1
+        # shrink array if possible
+        if 0 < self._size < len(self._data) // 4:
+            self._resize(len(self._data) // 2)
+        return value_of_last
 
     def _resize(self, cap):         # we assume cap >= len(self)
         """Resize to a new list of capacity >= len(self)"""
@@ -66,6 +89,21 @@ if __name__=="__main__":
     for i,c in enumerate("ABCDEFGHIJKLMNOP"):
         d.add_last(c)
         print(d)
+    # for k in range(d.__len__()):
+    #     d.delete_first()
+    #     print(d)
+    d.delete_first()
+    print(d)
+    d.add_first('X')
+    d.add_first('t')
+    d.add_first('y')
+    print(d)
+    d.add_last('L')
+    print(d)
+    d.add_last('G')
+    print(d)
+    # d.add_first('y')
+    # print(d)
     for k in range(d.__len__()):
-        d.delete_first()
+        d.delete_last()
         print(d)
