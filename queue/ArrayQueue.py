@@ -35,6 +35,12 @@ class ArrayQueue:
         self._data[self._front] = None      # help garbage collection
         self._front = (self._front + 1) % len(self._data)
         self._size -= 1
+        # shrink the underlying array
+        # robust approach - reduce array to halfof its current size
+        # whenever the number of elements sored in it falls below
+        # one fourth of its capacity
+        if 0 < self._size < len(self._data) // 4:
+            self._resize(len(self._data) // 2)
         return answer
 
     def enqueue(self, e):
@@ -51,6 +57,8 @@ class ArrayQueue:
         """Resize to a new list of capacity >= len(self)"""
         old = self._data         # keep track of existing list
         self._data = [None] * cap   # allocate list with new capacity
+        # we use walk variable to walk on old array and put the elements to the right indices
+        # because modular arithmetic depend on the size of the array that changed
         walk = self._front
         for k in range(self._size):     # only consider existing elements
             self._data[k] = old[walk]   # intentionally shift indices
@@ -61,7 +69,9 @@ class ArrayQueue:
 Q = ArrayQueue()
 for i in range(1,10):
     Q.enqueue(i)
-Q.dequeue()
+# test shrinking array
+for i in range(1,9):
+    Q.dequeue()
 Q.enqueue(5)
 Q.enqueue(6)
 for i in range(1,10):
